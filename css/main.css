@@ -26,6 +26,7 @@ textarea {
 }
 #container {
     width: 100%;
+    height: 100%;
 }
 #canvas {
     height: 100%;
@@ -51,6 +52,8 @@ textarea {
     padding: 8px 16px;
     box-shadow: 1px 1px 2px #a9a9a9;
     white-space: pre-wrap;
+	word-break: break-all;
+	word-wrap: break-word;
 }
 .husen .cross {
     z-index: 51;
@@ -69,7 +72,7 @@ textarea {
     font-size: 8px;
 }
 .header {
-    width: 280px;
+    width: 300px;
     text-align: center;
     z-index: 100;
     top: 0;
@@ -139,7 +142,8 @@ textarea {
 }
 #btn,
 #btn2,
-#btn3 {
+#btn3,
+#btn4 {
     background: #EEE;
     border: 1px solid #DDD;
     border-radius: 4px;
@@ -239,8 +243,8 @@ textarea {
     color: #3f3f3f;
     vertical-align: middle;
     font-weight: normal;
-    width: 70px;
-    margin-left: 30px;
+    width: 100px;
+    margin-left: 20px;
     float: left;
     height: 35px;
     line-height: 35px;
@@ -346,4 +350,30 @@ textarea {
 }
 .jsmodal-window-btn.jsmodal-window-btn_apps {
     margin-bottom: 20px;
+}
+
+h4.modal-title {
+	text-align: center;
+}
+
+div.modal-footer {
+	border-top: 0px #FFFFFF;
+	padding-top: 0px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+div.modal-body {
+	padding-top: 15px;
+	padding-bottom: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#reg-message,#login-message {
+    text-align: center;
+	color: red;
+    font-weight: bold;
+	padding-bottom: 10px;
 }

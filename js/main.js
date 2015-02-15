@@ -255,20 +255,35 @@ $(function() {
         }
 
         $("#back").click(function(e) {
-            //console.log(e);
-            var text = prompt("メモを入力してください。");
-            var _curClr = curClr;
+            var text;
 
-            if (!text) {
-                return;
+    		$('#modal-dialog').modal('show');
+
+    		$('#modal-dialog').on('shown.bs.modal', function() {
+    			$("#label").focus();
+    		});
+
+    		$("#btn4").off("click").on("click", function() {
+				$('#modal-dialog').modal('hide');
+                text = document.getElementById("label").value;
+                add_click(text);
+                document.getElementById("label").value = "";
+    		});
+
+            function add_click(text) {
+                var _curClr = curClr;
+
+                if (!text) {
+                    return;
+                }
+
+                ds.push({
+                    x: e.pageX,
+                    y: e.pageY,
+                    text: htmlEscape(text),
+                    color: _curClr
+                }, function() {});
             }
-
-            ds.push({
-                x: e.pageX,
-                y: e.pageY,
-                text: htmlEscape(text),
-                color: _curClr
-            }, function() {});
         });
 
         document.getElementById("btn").onclick = function() {
@@ -322,6 +337,7 @@ $(function() {
             document.getElementById("txt").value = "";
         };
     }
-});
 
-//$("#container").css("height", WindowHeight + "px");
+    //$("#container").css("height", WindowHeight + "px");
+
+});
