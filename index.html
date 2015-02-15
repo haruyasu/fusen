@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>付箋アプリ</title>
+	<link rel="stylesheet" href="css/main.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="http://cdn.mlkcca.com/v0.2.6/milkcocoa.js"></script>
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="header">
+            <p>付箋の色を選択して下さい</p>
+            <div class="coloron">
+                <div class="currentColor active" id="white"></div>
+                <div class="currentColor" id="green"></div>
+                <div class="currentColor" id="blue"></div>
+                <div class="currentColor" id="yellow"></div>
+                <div class="currentColor" id="pink"></div>
+                <div class="currentColor" id="purple"></div>
+            </div>
+            <p>日付のみを入力</p>
+            <div class="dayse">
+                <form name="yyyymmdd" method="post" action="#">
+                    <SELECT id="month">
+                        <option value="">--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </SELECT>
+                    月
+                    <SELECT id="day">
+                        <option value="">--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    日
+                    <input type="button" value="日付" id="btn3">
+                </form>
+            </div>
+            <p>メモを書いて入力ボタンを押して下さい</p>
+            <div class="memo">
+                <textarea id="txt" cols="22" rows="5"></textarea>
+                <br>
+                <input type="button" value="入力" id="btn">
+                <input type="button" value="削除" id="btn2">
+            </div>
+        </div>
+        <div id="back"></div>
+        <div id="canvas"></div>
+
+        <div id="register-modal" class="jsmodal-window">
+            <div class="jsmodal-window-header">
+                <h1 class="jsmodal-window-headline">新規登録</h1>
+            </div>
+            <div class="jsmodal-window-body">
+                <form>
+                    <dl>
+                        <dt class="jsmodal-window-form-label">メールアドレス</dt>
+                        <dd class="jsmodal-window-form-input">
+                            <input type="email" class="form-control" id="register-email">
+                        </dd>
+                        <dt class="jsmodal-window-form-label">パスワード</dt>
+                        <dd class="jsmodal-window-form-input">
+                            <input type="password" class="form-control" id="register-password">
+                        </dd>
+                        <dt class="jsmodal-window-form-label">パスワード確認</dt>
+                        <dd class="jsmodal-window-form-input">
+                            <input type="password" class="form-control" id="register-password2">
+                        </dd>
+                    </dl>
+                    <div id="reg-message"></div>
+                    <a id="register-btn" class="jsmodal-window-btn" role="button">新規登録する</a>
+                    <a id="switch-to-login-btn">ログインしますか？</a>
+                </form>
+            </div>
+            <div class="jsmodal-window-footer"></div>
+        </div>
+
+        <div id="login-modal" class="jsmodal-window">
+            <div class="jsmodal-window-header">
+                <h1 class="jsmodal-window-headline">ログイン</h1>
+            </div>
+            <div class="jsmodal-window-body">
+                <form>
+                    <dl>
+                        <dt class="jsmodal-window-form-label">メールアドレス</dt>
+                        <dd class="jsmodal-window-form-input">
+                            <input type="email" class="form-control" id="login-email">
+                        </dd>
+                        <dt class="jsmodal-window-form-label">パスワード</dt>
+                        <dd class="jsmodal-window-form-input">
+                            <input type="password" class="form-control" id="login-password">
+                        </dd>
+                    </dl>
+                    <div id="login-message"></div>
+                    <a id="login-btn" class="jsmodal-window-btn" role="button">ログイン</a>
+                    <a id="switch-btn">新規登録しますか？</a>
+                </form>
+            </div>
+            <div class="jsmodal-window-footer"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
