@@ -316,7 +316,7 @@ $(function() {
             if (!month || !day) {
                 return;
             }
-            text = "　　　　" + month + "月" + day + "日" + "(" + myDay[myWeek] + ")";
+            text = "　　　" + month + "月" + day + "日" + "(" + myDay[myWeek] + ")";
 
             ds.push({
                 x: 330,
